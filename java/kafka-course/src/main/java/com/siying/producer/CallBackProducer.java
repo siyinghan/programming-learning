@@ -17,7 +17,7 @@ public class CallBackProducer {
 
         //3. 发送数据
         for (int i = 0; i < 10; i++) {
-            producer.send(new ProducerRecord<String, String>("first", "siying--" + i), (metadata, exception) -> {
+            producer.send(new ProducerRecord<String, String>("first", 0, "siying", "siying--" + i), (metadata, exception) -> {
                         if (exception == null) {
                             System.out.println(metadata.partition() + "--" + metadata.offset());
                         } else {

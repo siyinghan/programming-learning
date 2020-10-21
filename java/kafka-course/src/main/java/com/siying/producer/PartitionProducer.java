@@ -1,15 +1,11 @@
 package com.siying.producer;
 
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.clients.producer.*;
 
 import java.util.Properties;
-import java.util.concurrent.ExecutionException;
 
-public class MyProducer {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+public class PartitionProducer {
+    public static void main(String[] args) {
         //1. 创建Kafka生产者的配置信息
         Properties properties = new Properties();
 
@@ -35,12 +31,24 @@ public class MyProducer {
         properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
+        // 添加分区器
+        properties.put("partitioner.class", "com.siying.partitioner.MyPartition");
+
         //9. 创建生产者对象
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
 
         //10. 发送数据
         for (int i = 0; i < 10; i++) {
-            producer.send(new ProducerRecord<String, String>("first", "siying", "siying--" + i)).get();
+            producer.send(new ProducerRecord<String, String>("first", "siying--" + i), new Callback() {
+                @Override
+                public void onCompletion(RecordMetadata recordMetadata, Exception e) {
+                    if (e == null) {
+                        System.out.println(recordMetadata.partition() + "--" + recordMetadata.offset());
+                    } else {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
 
         //11. 关闭资源
