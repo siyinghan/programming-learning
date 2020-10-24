@@ -16,7 +16,7 @@ public class MyConsumer {
         //2. 给配置信息赋值
         // 连接的集群
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        // 开启自动提交
+        // 开启自动提交offset
         properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, true);
         // 自动提交的延迟，默认是1000ms
         properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
