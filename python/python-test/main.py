@@ -4,4 +4,3 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-import matplotlib.gridspec as gridspec
