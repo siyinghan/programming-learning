@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 声明Student对象 -->
+    <bean id="myStudent" class="com.siying.ba01.Student">
+        <property name="name" value="李四"/><!-- setName("李四")) -->
+        <property name="age" value="20"/><!-- setAge(20) -->
+        <property name="email" value="lisi@qq.com"/>
+    </bean>
+
+    <!-- Date类 -->
+    <bean id="mydate" class="java.util.Date">
+        <property name="time" value="8364297429"/><!-- setTime(8364297429) -->
+    </bean>
+</beans>
