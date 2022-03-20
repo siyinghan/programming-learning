@@ -1,13 +1,16 @@
 {
-	"folders": [
-		{
-			"path": "html"
-		},
-		{
-			"path": "jupyter"
-		},
-		{
-			"path": "lit-playground"
-		}
-	]
+  "folders": [
+    {
+      "path": "html"
+    },
+    {
+      "path": "jupyter"
+    },
+    {
+      "path": "lit-playground"
+    }
+  ],
+  "settings": {
+    "jupyter.jupyterServerType": "local"
+  }
 }
