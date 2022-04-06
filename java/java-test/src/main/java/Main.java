@@ -1,3 +1,5 @@
+package main.java;
+
 import javax.swing.*;
 import java.io.*;
 import java.math.BigDecimal;
